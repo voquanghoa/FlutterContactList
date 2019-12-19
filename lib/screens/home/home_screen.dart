@@ -14,12 +14,17 @@ class HomeScreen extends StatefulWidget{
 
 class HomeScreenState extends State<HomeScreen>{
 
-  Future<ContactData> contactData;
+
+  Future<ContactData> futureContactData;
+
+  ContactData contactData;
+  var contacts = [];
+  var previousPage = 0;
 
   @override
   void initState() {
     super.initState();
-    contactData = ContactService.fetch();
+    futureContactData = ContactService.fetch();
   }
 
   @override
@@ -33,15 +38,28 @@ class HomeScreenState extends State<HomeScreen>{
     );
   }
 
+  loadMore() {
+    if(contactData.page < contactData.totalPages){
+      if(contactData.page >= previousPage){
+        previousPage = contactData.page + 1;
+        setState(() {
+          debugPrint("Load page ${contactData.page + 1}");
+          futureContactData = ContactService.fetch(contactData.page + 1);
+        });
+      }
 
+    }
+  }
 
   getBody(){
 
     return FutureBuilder<ContactData>(
-      future: contactData,
+      future: futureContactData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return ContactListWidget(snapshot.data.data);
+          contactData = snapshot.data;
+          contacts.addAll(contactData.data);
+          return  ContactListWidget(contacts, this.loadMore);
         } else if (snapshot.hasError) {
           return ErrorWidget("${snapshot.error}");
         }

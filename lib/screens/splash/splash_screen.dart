@@ -4,7 +4,7 @@ import 'package:splashscreen/splashscreen.dart';
 
 class SplashPage extends SplashScreen{
   SplashPage():super(
-      seconds: 14,
+      seconds: 1,
       navigateAfterSeconds: new HomeScreen(),
       title: new Text('Welcome In SplashScreen'),
       image: new Image.asset('assets/splash.png'),
