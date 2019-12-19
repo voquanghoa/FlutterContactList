@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_contact_list/screens/home/home.screen.dart';
+import 'package:flutter_contact_list/screens/home/home_screen.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class SplashPage extends SplashScreen{

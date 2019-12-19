@@ -5,6 +5,8 @@ class Contact {
   var lastName = "";
   var avatar = "";
 
+  getFullName() => "$firstName $lastName";
+
   Contact(this.id, this.email, this.firstName, this.lastName);
 
   Contact.fromJson(Map<String, dynamic> json)
