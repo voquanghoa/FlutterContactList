@@ -25,7 +25,7 @@ class ContactWidgetState extends State<ContactWidget>{
 
     return Card(
       child: ListTile(
-        leading: Avatar(contact.avatar),
+        leading: AvatarWidget(contact.avatar),
         title: Text(contact.getFullName()),
         subtitle: Text(contact.email),
       ),

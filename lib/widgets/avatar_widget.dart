@@ -2,18 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Avatar extends StatefulWidget{
+class AvatarWidget extends StatefulWidget{
 
   var avatar = "";
 
-  Avatar(this.avatar);
+  AvatarWidget(this.avatar);
 
   @override
-  State<StatefulWidget> createState() => AvatarState();
+  State<StatefulWidget> createState() => AvatarWidgetState();
 
 }
 
-class AvatarState extends State<Avatar>{
+class AvatarWidgetState extends State<AvatarWidget>{
   @override
   Widget build(BuildContext context) {
 
