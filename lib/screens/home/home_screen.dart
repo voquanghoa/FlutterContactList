@@ -1,3 +1,4 @@
+import 'package:contacts/screens/detail/detail_screen.dart';
 import 'package:contacts/widgets/contact_list_widget.dart';
 import 'package:contacts/widgets/loading_widget.dart';
 import 'package:contacts/api/contact_service.dart';
@@ -17,14 +18,14 @@ class HomeScreenState extends State<HomeScreen>{
 
   Future<ContactData> futureContactData;
 
-  ContactData contactData;
   var contacts = [];
-  var previousPage = 1;
+  var previousPage = 0;
+  var pageTotal = 0;
 
   @override
   void initState() {
     super.initState();
-    futureContactData = ContactService.fetch();
+    loadMore();
   }
 
   @override
@@ -39,7 +40,7 @@ class HomeScreenState extends State<HomeScreen>{
   }
 
   loadMore() {
-    if(previousPage < contactData.totalPages){
+    if(previousPage < pageTotal || pageTotal == 0){
         previousPage = previousPage + 1;
         setState(() {
           debugPrint("Load page $previousPage");
@@ -48,15 +49,25 @@ class HomeScreenState extends State<HomeScreen>{
       }
     }
 
+    showContact(Contact contact){
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (BuildContext context){
+            return DetailScreen(contact);
+          }
+        )
+      );
+    }
+
   getBody(){
 
     return FutureBuilder<ContactData>(
       future: futureContactData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          contactData = snapshot.data;
-          contacts.addAll(contactData.data);
-          return  ContactListWidget(contacts, this.loadMore);
+          pageTotal = snapshot.data.totalPages;
+          contacts.addAll(snapshot.data.data);
+          return  ContactListWidget(contacts, this.loadMore, this.showContact);
         } else if (snapshot.hasError) {
           return ErrorWidget("${snapshot.error}");
         }
