@@ -1,8 +1,8 @@
+import 'package:contacts/widgets/contact_list_widget.dart';
+import 'package:contacts/widgets/loading_widget.dart';
+import 'package:contacts/api/contact_service.dart';
+import 'package:contacts/model/model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_contact_list/api/contact_service.dart';
-import 'package:flutter_contact_list/model/model.dart';
-import 'package:flutter_contact_list/widgets/contact_list_widget.dart';
-import 'package:flutter_contact_list/widgets/loading_widget.dart';
 
 class HomeScreen extends StatefulWidget{
 
@@ -19,7 +19,7 @@ class HomeScreenState extends State<HomeScreen>{
 
   ContactData contactData;
   var contacts = [];
-  var previousPage = 0;
+  var previousPage = 1;
 
   @override
   void initState() {
@@ -32,24 +32,21 @@ class HomeScreenState extends State<HomeScreen>{
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Contacts"),
       ),
       body: getBody(),
     );
   }
 
   loadMore() {
-    if(contactData.page < contactData.totalPages){
-      if(contactData.page >= previousPage){
-        previousPage = contactData.page + 1;
+    if(previousPage < contactData.totalPages){
+        previousPage = previousPage + 1;
         setState(() {
-          debugPrint("Load page ${contactData.page + 1}");
-          futureContactData = ContactService.fetch(contactData.page + 1);
+          debugPrint("Load page $previousPage");
+          futureContactData = ContactService.fetch(previousPage);
         });
       }
-
     }
-  }
 
   getBody(){
 
@@ -68,6 +65,4 @@ class HomeScreenState extends State<HomeScreen>{
       },
     );
   }
-
-
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_contact_list/model/model.dart';
+import 'package:contacts/model/model.dart';
 
 import 'avatar_widget.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_contact_list/model/model.dart';
+import 'package:contacts/model/model.dart';
 import 'package:http/http.dart' as http;
 
 class ContactService{

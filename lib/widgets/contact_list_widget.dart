@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_contact_list/widgets/contact_widget.dart';
+import 'package:contacts/widgets/contact_widget.dart';
 
 class ContactListWidget extends StatefulWidget{
 
