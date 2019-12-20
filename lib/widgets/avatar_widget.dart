@@ -9,11 +9,11 @@ class AvatarWidget extends StatefulWidget{
   AvatarWidget(this.avatar);
 
   @override
-  State<StatefulWidget> createState() => AvatarWidgetState();
+  State<StatefulWidget> createState() => _AvatarWidgetState();
 
 }
 
-class AvatarWidgetState extends State<AvatarWidget>{
+class _AvatarWidgetState extends State<AvatarWidget>{
   @override
   Widget build(BuildContext context) {
 

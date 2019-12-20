@@ -16,7 +16,7 @@ class Contact {
 
   getFullName() => "$firstName $lastName";
 
-  Contact(this.id, this.email, this.firstName, this.lastName);
+  Contact(this.id, this.email, this.firstName, this.lastName, this.avatar);
 
   factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
   Map<String, dynamic> toJson() => _$ContactToJson(this);

@@ -6,19 +6,19 @@ import 'avatar_widget.dart';
 
 class ContactWidget extends StatefulWidget{
 
-  var contact = Contact(0, "", "", "");
+  Contact contact;
 
   ContactWidget(this.contact);
 
   @override
-  State<StatefulWidget> createState() => ContactWidgetState(contact);
+  State<StatefulWidget> createState() => _ContactWidgetState(contact);
 }
 
-class ContactWidgetState extends State<ContactWidget>{
+class _ContactWidgetState extends State<ContactWidget>{
 
-  var contact = Contact(0, "", "", "");
+  Contact contact;
 
-  ContactWidgetState(this.contact);
+  _ContactWidgetState(this.contact);
 
   @override
   Widget build(BuildContext context) {

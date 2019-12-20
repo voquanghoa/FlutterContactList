@@ -10,20 +10,20 @@ class DetailScreen extends StatefulWidget{
   DetailScreen(this.contact);
 
   @override
-  State<StatefulWidget> createState() => DetailScreenState(contact);
+  State<StatefulWidget> createState() => _DetailScreenState(contact);
 
 }
 
-class DetailScreenState extends State<DetailScreen>{
+class _DetailScreenState extends State<DetailScreen>{
 
   Contact contact;
-  DetailScreenState(this.contact);
+  _DetailScreenState(this.contact);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(contact.getFullName())),
-      body: ContactDetailWidget(contact),
+      body: Center(child: ContactDetailWidget(contact)),
     );
   }
 

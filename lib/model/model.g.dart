@@ -12,7 +12,8 @@ Contact _$ContactFromJson(Map<String, dynamic> json) {
     json['email'] as String,
     json['first_name'] as String,
     json['last_name'] as String,
-  )..avatar = json['avatar'] as String;
+    json['avatar'] as String,
+  );
 }
 
 Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{

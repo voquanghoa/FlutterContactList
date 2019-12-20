@@ -9,13 +9,13 @@ class ContactDetailWidget extends StatefulWidget {
   ContactDetailWidget(this.contact);
 
   @override
-  State<StatefulWidget> createState() => ContactDetailState(contact);
+  State<StatefulWidget> createState() => _ContactDetailState(contact);
 }
 
-class ContactDetailState extends State<ContactDetailWidget> {
+class _ContactDetailState extends State<ContactDetailWidget> {
   Contact contact;
 
-  ContactDetailState(this.contact);
+  _ContactDetailState(this.contact);
 
   @override
   Widget build(BuildContext context) {

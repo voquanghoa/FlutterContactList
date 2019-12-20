@@ -15,16 +15,16 @@ class ContactListWidget extends StatefulWidget{
   ContactListWidget(this.contacts, this.loadMoreCallback, this.onSelected);
 
   @override
-  State<StatefulWidget> createState() => ContactListState(contacts, onSelected);
+  State<StatefulWidget> createState() => _ContactListState(contacts, onSelected);
 }
 
-class ContactListState extends State<ContactListWidget>{
+class _ContactListState extends State<ContactListWidget>{
 
   var contacts = [];
 
   ContactCallback onSelected;
 
-  ContactListState(this.contacts, this.onSelected);
+  _ContactListState(this.contacts, this.onSelected);
 
   loadMore(){
     this.widget.loadMoreCallback();

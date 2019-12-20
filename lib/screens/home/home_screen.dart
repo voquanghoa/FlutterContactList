@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatefulWidget{
 
   @override
-  State<StatefulWidget> createState() => HomeScreenState();
+  State<StatefulWidget> createState() => _HomeScreenState();
 
 }
 
 
-class HomeScreenState extends State<HomeScreen>{
+class _HomeScreenState extends State<HomeScreen>{
 
 
   Future<ContactData> futureContactData;
@@ -35,7 +35,20 @@ class HomeScreenState extends State<HomeScreen>{
       appBar: AppBar(
         title: Text("Contacts"),
       ),
-      body: getBody(),
+      body: FutureBuilder<ContactData>(
+        future: futureContactData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            pageTotal = snapshot.data.totalPages;
+            contacts.addAll(snapshot.data.data);
+            return  ContactListWidget(contacts, this.loadMore, this.showContact);
+          } else if (snapshot.hasError) {
+            return ErrorWidget("${snapshot.error}");
+          }
+
+          return LoadingWidget();
+        },
+      )
     );
   }
 
@@ -58,22 +71,4 @@ class HomeScreenState extends State<HomeScreen>{
         )
       );
     }
-
-  getBody(){
-
-    return FutureBuilder<ContactData>(
-      future: futureContactData,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          pageTotal = snapshot.data.totalPages;
-          contacts.addAll(snapshot.data.data);
-          return  ContactListWidget(contacts, this.loadMore, this.showContact);
-        } else if (snapshot.hasError) {
-          return ErrorWidget("${snapshot.error}");
-        }
-
-        return LoadingWidget();
-      },
-    );
-  }
 }
