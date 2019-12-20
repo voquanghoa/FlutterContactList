@@ -10,12 +10,15 @@ environment:
 dependencies:
   http: ^0.12.0+2
   cached_network_image: ^2.0.0-rc
+  json_annotation: ^3.0.0
+  json_serializable: ^3.2.3
   flutter:
     sdk: flutter
   splashscreen:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  build_runner: ^1.7.2
   flutter_test:
     sdk: flutter
 
