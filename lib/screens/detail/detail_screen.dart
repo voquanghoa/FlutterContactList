@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class DetailScreen extends StatefulWidget{
 
-  Contact contact;
+  final Contact contact;
 
   DetailScreen(this.contact);
 
